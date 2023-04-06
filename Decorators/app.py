@@ -86,9 +86,9 @@ def make_greeting(name, age=None):
     else:
         return f"Whoa {name}! {age} already, you are growing up!"
 
-print(make_greeting("Freja"))
-print()
-print(make_greeting("Luna", 1))
+#print(make_greeting("Freja"))
+#print()
+#print(make_greeting("Luna", 1))
 
 
 
@@ -108,7 +108,7 @@ def countdown(from_number):
         print(from_number)
         countdown(from_number - 1)
 
-print(countdown(10))
+#print(countdown(10))
 
 
 # Making sure if user is logged in
@@ -128,3 +128,95 @@ def login_required(func):
 @login_required
 def secret():
     pass
+
+
+# Fancy decorators
+
+
+# Decorating classes
+# Some commonly used decorators that are even built-ins in Python are @classmethod, @staticmethod, and @property. The @classmethod and @staticmethod decorators are used to define methods inside a class namespace that are not connected to a particular instance of that class.
+
+def repeat(number):
+    def decorator_repeat(func):
+        @functools.wraps(func)
+        def wrapper_repeat(*args, **kwargs):
+            for run in range(number):
+                func(*args, **kwargs)
+        return wrapper_repeat
+    return decorator_repeat
+
+class TimeWaster:
+    @debug
+    def __init__(self, max_num):
+        self.max_num = max_num
+
+    @debug
+    def waste_time(self, num_times):
+        for _ in range(num_times):
+            sum([i ** 2 for i in range(self.max_num)])
+
+tw = TimeWaster(10)
+print(tw)
+
+@do_twice
+@debug
+def do_loop(number):
+    for i in range(number):
+        print(i)
+
+do_loop(2)
+
+cycle_number = 3
+@repeat(number = cycle_number)
+def do_round(number):
+    for round in range(number):
+        print(f"round: {round}")
+
+do_round(2)
+
+def repeat_with_spice(_func=None, *, num_times=2):
+    def decorator_repeat(func):
+        @functools.wraps(func)
+        def wrapper_repeat(*args, **kwargs):
+            for _ in range(num_times):
+                value = func(*args, **kwargs)
+            return value
+        return wrapper_repeat
+
+    if _func is None:
+        return decorator_repeat
+    else:
+        return decorator_repeat(_func)
+
+@repeat_with_spice
+def do_loop(number):
+    for i in range(number):
+        print(i)
+
+do_loop(2)
+
+@repeat_with_spice(num_times = 2)
+def do_loop(number):
+    for i in range(number):
+        print(i)
+do_loop(2)
+
+
+def count_calls(func):
+    @functools.wraps(func)
+    def wrapper_count_calls(*args, **kwargs):
+        wrapper_count_calls.num_calls += 1
+        print(f"Call {wrapper_count_calls.num_calls} of {func.__name__!r}")
+        return func(*args, **kwargs)
+    wrapper_count_calls.num_calls = 0
+    return wrapper_count_calls
+@count_calls
+@repeat_with_spice(num_times = 2)
+def do_loop(number):
+    for i in range(number):
+        print(i)
+
+do_loop(2)
+print(do_loop.num_calls)
+do_loop(2)
+print(do_loop.num_calls)
