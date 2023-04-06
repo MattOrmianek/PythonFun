@@ -1,5 +1,6 @@
 import functools
 import time
+import math
 # function returns a value based on the given arguments
 
 def my_function(argument):
@@ -220,3 +221,17 @@ do_loop(2)
 print(do_loop.num_calls)
 do_loop(2)
 print(do_loop.num_calls)
+
+
+def set_unit(unit):
+    """Register a unit on a function"""
+    def decorator_set_unit(func):
+        func.unit = unit
+        return func
+    return decorator_set_unit
+
+@set_unit("cm^3")
+def volume(radius, height):
+    return math.pi * radius ** 2 * height
+
+print(f"Volume of r = 3 and h = 10 is equal to {volume(3,10)} {volume.unit}")
