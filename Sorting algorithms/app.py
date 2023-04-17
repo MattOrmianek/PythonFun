@@ -3,7 +3,7 @@
 from random import randint
 from timeit import repeat
 from algorithms import bubble_sort_cython
-
+import time
 # template from real python
 def run_sorting_algorithm(algorithm, array):
     # Set up the context and prepare the call to the specified
@@ -16,7 +16,7 @@ def run_sorting_algorithm(algorithm, array):
 
     # Execute the code ten different times and return the time
     # in seconds that each execution took
-    times = repeat(setup=setup_code, stmt=stmt, repeat=3, number=10)
+    times = repeat(setup=setup_code, stmt=stmt, repeat=5, number=10)
 
     # Finally, display the name of the algorithm and the
     # minimum time it took to run
@@ -54,7 +54,7 @@ def bubble_sort_python(array):
 
     return array
 
-ARRAY_LENGTH = 1000
+ARRAY_LENGTH = 5000
 
 if __name__ == "__main__":
     # Generate an array of `ARRAY_LENGTH` items consisting
@@ -64,5 +64,5 @@ if __name__ == "__main__":
     # Call the function using the name of the sorting algorithm
     # and the array you just created
     run_sorting_algorithm(algorithm="sorted", array = array)
-    run_sorting_algorithm(algorithm="bubble_sort_python", array = array)
     run_sorting_algorithm(algorithm="bubble_sort_cython", array = array)
+    run_sorting_algorithm(algorithm="bubble_sort_python", array = array)

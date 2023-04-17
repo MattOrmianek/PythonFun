@@ -1,0 +1,1 @@
+python3 setup_algorithms.py build_ext --inplace
