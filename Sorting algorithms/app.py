@@ -2,8 +2,9 @@
 # create for every search comparsion in lineraity search
 from random import randint
 from timeit import repeat
-from algorithms import bubble_sort_cython
+from algorithms import sorted_cython, bubble_sort_cython, insertion_sort_cython
 import time
+
 # template from real python
 def run_sorting_algorithm(algorithm, array):
     # Set up the context and prepare the call to the specified
@@ -16,7 +17,7 @@ def run_sorting_algorithm(algorithm, array):
 
     # Execute the code ten different times and return the time
     # in seconds that each execution took
-    times = repeat(setup=setup_code, stmt=stmt, repeat=5, number=10)
+    times = repeat(setup=setup_code, stmt=stmt, repeat=1, number=10)
 
     # Finally, display the name of the algorithm and the
     # minimum time it took to run
@@ -54,6 +55,38 @@ def bubble_sort_python(array):
 
     return array
 
+
+def insertion_sort_python(array):
+    # Loop from the second element of the array until
+    # the last element
+    for i in range(1, len(array)):
+        # This is the element we want to position in its
+        # correct place
+        key_item = array[i]
+
+        # Initialize the variable that will be used to
+        # find the correct position of the element referenced
+        # by `key_item`
+        j = i - 1
+
+        # Run through the list of items (the left
+        # portion of the array) and find the correct position
+        # of the element referenced by `key_item`. Do this only
+        # if `key_item` is smaller than its adjacent values.
+        while j >= 0 and array[j] > key_item:
+            # Shift the value one position to the left
+            # and reposition j to point to the next element
+            # (from right to left)
+            array[j + 1] = array[j]
+            j -= 1
+
+        # When you finish shifting the elements, you can position
+        # `key_item` in its correct location
+        array[j + 1] = key_item
+
+    return array
+
+
 ARRAY_LENGTH = 5000
 
 if __name__ == "__main__":
@@ -64,5 +97,8 @@ if __name__ == "__main__":
     # Call the function using the name of the sorting algorithm
     # and the array you just created
     run_sorting_algorithm(algorithm="sorted", array = array)
+    run_sorting_algorithm(algorithm="sorted_cython", array = array)
     run_sorting_algorithm(algorithm="bubble_sort_cython", array = array)
     run_sorting_algorithm(algorithm="bubble_sort_python", array = array)
+    run_sorting_algorithm(algorithm="insertion_sort_python", array = array)
+    run_sorting_algorithm(algorithm="insertion_sort_cython", array = array)
