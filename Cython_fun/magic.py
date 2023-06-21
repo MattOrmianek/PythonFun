@@ -12,7 +12,8 @@ import re
 try:
     file = sys.argv[1]
     print(f"Automate cythonize process on {file} file.")
-except:
+except Exception as e:
+    print(f"Error: {e}")
     print("Can't open file")
 
 def find_function_end(text, start_line):
@@ -21,7 +22,8 @@ def find_function_end(text, start_line):
         code_lines = text.strip().split('\n')
         try:
             indent = code_lines[start_line].split()[0]
-        except:
+        except Exception as e:
+            print(f"Error: {e}")
             return("There are not that many lines")
     else:
         return "No text"
