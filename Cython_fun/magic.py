@@ -9,14 +9,23 @@ import re
 # Make list of rules how to change python code to cython code
 # Make list of types variables and how they change for cython
 
-
-file = sys.argv[1]
-print(f"Automate cythonize process on {file} file.")
+try:
+    file = sys.argv[1]
+    print(f"Automate cythonize process on {file} file.")
+except:
+    print("Can't open file")
 
 def find_function_end(text, start_line):
 
-    code_lines = text.strip().split('\n')
-    indent = code_lines[start_line].split()[0]
+    if text != "":
+        code_lines = text.strip().split('\n')
+        try:
+            indent = code_lines[start_line].split()[0]
+        except:
+            return("There are not that many lines")
+    else:
+        return "No text"
+
     end_line = start_line
 
     for line_number in range(start_line + 1, len(code_lines)):
@@ -45,7 +54,6 @@ def magic(file):
         if word.lower() in line.lower():
             matches.append((line_number, line.index(word.lower())))
 
-
     for match in matches:
         line_number, position = match
         lines_of_function.append(line_number+1)
@@ -59,6 +67,7 @@ def magic(file):
         function_content = '\n'.join(lines[function:function_end_line+1])
         print(function_content)
         list_of_functions.append(function_content)
+
     return list_of_functions
 
 def convert_to_cython(function: str):
