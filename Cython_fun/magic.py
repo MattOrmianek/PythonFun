@@ -14,13 +14,15 @@ with open(file, 'r') as file:
 #print(f"content_of_file: \n {text}")
 
 word = '#acythonize'
-words = text
-words = text.split()
-matches = []
-for index, w in enumerate(words):
-    if w == word.lower():
-        matches.append(index)
 
+lines = text.splitlines()
+matches = []
+for line_number, line in enumerate(lines):
+    if word.lower() in line.lower():
+        matches.append((line_number, line.index(word.lower())))
+
+# Print the number of occurrences and their positions
 print(f"The word '{word}' appears {len(matches)} times in the string.")
 for match in matches:
-    print(f"Found at position {match}: '{words[match]}'")
+    line_number, position = match
+    print(f"Found at line {line_number + 1}, position {position}: '{lines[line_number]}'")
