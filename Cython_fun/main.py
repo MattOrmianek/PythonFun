@@ -8,6 +8,13 @@ def hello_world():
 def math_calc(num1, num2):
     return num1 * num2
 
+#acythonize
+def multipy_string(text):
+    return text * 10
+
+# this is for testing only
+def test():
+    return "test"
 
 def main():
     hello_world()
