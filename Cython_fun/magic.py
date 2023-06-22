@@ -3,6 +3,7 @@
 import sys
 import re
 # Plan:
+# Fix problem with random_choice function, it only takes first return and skips another one
 # Write tests for already existing code
 # Write error catching
 # Check how to edit string and save it properly with indentation
@@ -63,11 +64,10 @@ def magic(file):
     list_of_functions = []
     for function in lines_of_function:
         function_end_line = find_function_end(text, function)
+        function_content = '\n'.join(lines[function : function_end_line + 1])
 
-        print(f"\nThe functions starts at {function} and ends at {function_end_line+1}")
-        print("Function code: \n")
-        function_content = '\n'.join(lines[function:function_end_line+1])
-        print(function_content)
+        print(f"\nThe functions starts at {function} and ends at {function_end_line + 1}")
+        print(f"Function code: \n {function_content}")
         list_of_functions.append(function_content)
 
     return list_of_functions
@@ -82,8 +82,9 @@ def convert_to_cython(function: str):
     for variable in matches:
         if variable == "": variable = None
         list_of_variables.append(variable)
-    print(f"variables:\n {list_of_variables}")
-    print(f"function:\n {function}\n")
+
+    print(f"variables: {list_of_variables}")
+    print(f"function:\n {function} \n")
     return 0
 
 def main():

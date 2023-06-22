@@ -16,6 +16,13 @@ def multipy_string(text):
 def test():
     return "test"
 
+#acythonize
+def random_choice(choice):
+    if choice > 1:
+        return "top"
+    else:
+        return "bottom"
+
 def main():
     hello_world()
     print(math_calc(2,3))
