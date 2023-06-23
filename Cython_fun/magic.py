@@ -18,7 +18,6 @@ except Exception as e:
     print("Can't open file")
 
 def find_function_end(text, start_line):
-
     if text != "":
         code_lines = text.strip().split('\n')
         try:
@@ -33,13 +32,14 @@ def find_function_end(text, start_line):
 
     for line_number in range(start_line + 1, len(code_lines)):
         line = code_lines[line_number]
+        if line.startswith('def'):
+            break
 
         if line.startswith(indent):
             end_line = line_number
 
         if 'return' in line:
             end_line = line_number
-            break
 
     return end_line
 
@@ -89,8 +89,8 @@ def convert_to_cython(function: str):
 
 def main():
     list_of_functions = magic(file)
-    for function in list_of_functions:
-        convert_to_cython(function)
+    #for function in list_of_functions:
+    #    convert_to_cython(function)
 
 
 if __name__ == "__main__":
