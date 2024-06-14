@@ -5,8 +5,8 @@
 import json
 import time
 
-POWER = 1000000
-NUMBER_OF_RUNS = 100
+POWER = 100000
+NUMBER_OF_RUNS = 10
 
 
 def loop(list_of_countries):
@@ -38,8 +38,8 @@ def run_muliple_times(n, function, *args):
         avg_time += end - start
     print("POWER '{}'".format(POWER))
     print("\t Average time for function '{}'".format(function.__name__))
-    print("\t For {} runs: {:.6f} seconds".format(n, avg_time))
-    print("\t For one run: {:.6f} seconds".format(avg_time / n))
+    print("\t For {} runs: {:.3f} seconds".format(n, avg_time))
+    print("\t For one run: {:.3f} seconds".format(avg_time / n))
 
 
 if __name__ == "__main__":
