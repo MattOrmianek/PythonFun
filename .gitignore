@@ -1,0 +1,13 @@
+algoritms.cpython-311-darwin.so
+algoritms.c
+build
+build/lib.macosx-11.0-arm64-3.11
+build/lib.macosx-11.0-arm64-3.11/algoritms.cpython-311-darwin.so
+build/lib.macosx-11.0-arm64-3.11/algoritms.cpython-311-darwin.abi3.so
+build/lib.macosx-11.0-arm64-3.11/algoritms.cpython-311-darwin.so.dSYM
+build/lib.macosx-11.0-arm64-3.11/algoritms.cpython-311-darwin.abi3.so.dSYM
+build/lib.macosx-11.0-arm64-3.11/algoritms.cpython-311-darwin.so.dSYM/Contents
+algorithms.c
+algorithms.cpython-311-darwin.so
+*cpython*
+settings.json
