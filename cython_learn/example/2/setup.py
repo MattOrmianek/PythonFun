@@ -11,7 +11,5 @@ setup(
     name='MyCythonApp',
     ext_modules=cythonize(extensions),
 )
-# to build:
-# python setup.py build_ext --inplace
-# to run:
-# python -c "import main; main.main()"
+
+# to run python -c "import main; main.main()"
