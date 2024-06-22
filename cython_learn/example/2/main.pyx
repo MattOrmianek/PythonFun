@@ -49,6 +49,4 @@ if __name__ == "__main__":
 
 # for cython - for n = 50 -> 2.49 seconds
 # for python - for n = 50 -> 0.60 seconds
-
-
 # python setup.py build_ext --inplace && python -c "import main; main.main()"
