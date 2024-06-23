@@ -14,7 +14,7 @@ app = Flask(__name__)
 class Timethis:
     def __init__(self, func):
         self.func = func
-        wraps(func)(self)  # Use wraps to preserve the function's metadata
+        wraps(func)(self)
 
     def __call__(self, *args, **kwargs):
         t0 = time.time()
