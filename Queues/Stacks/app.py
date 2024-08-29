@@ -1,25 +1,26 @@
-#Stacks
+# Stacks
 
 from queue import LifoQueue
 
 stack = LifoQueue(maxsize=3)
 
-stack.put('f')
-stack.put('g')
-stack.put('h')
+stack.put("f")
+stack.put("g")
+stack.put("h")
 
 print(stack.full())
 print(stack.get())
 print(stack.full())
 print(stack.empty())
 
+
 class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
 
-class Stack:
 
+class Stack:
     # Initializing a stack.
     # Use a dummy node, which is
     # easier for handling edge cases.
@@ -46,7 +47,6 @@ class Stack:
 
     # Get the top item of the stack
     def peek(self):
-
         # Sanitary check to see if we
         # are peeking an empty stack.
         if self.isEmpty():
@@ -68,6 +68,7 @@ class Stack:
         self.head.next = self.head.next.next
         self.size -= 1
         return remove.value
+
 
 stack = Stack()
 for i in range(1, 11):

@@ -1,7 +1,8 @@
-""" This is example of a simple external module """
+"""This is example of a simple external module"""
+
 
 def module1_function():
-    """ This is a simple function from module1 """
+    """This is a simple function from module1"""
     # inifity loop
     while True:
         print("This is inside a loop in function in module")

@@ -1,4 +1,4 @@
-""" This will be test for the speed of the code, comparing loops vs recursion """
+"""This will be test for the speed of the code, comparing loops vs recursion"""
 
 # pylint: disable=consider-using-f-string,unspecified-encoding,consider-using-with,unused-variable
 # pylint: disable=redefined-outer-name,invalid-name

@@ -7,19 +7,19 @@
 # stack - LIFO
 
 
-#deque - deck - double-ended queue
+# deque - deck - double-ended queue
 
 from collections import deque
 
-test = deque(['a','b','c'])
+test = deque(["a", "b", "c"])
 
 
 print(f"{test}")
 
-test.append('d')
+test.append("d")
 print(f"{test}")
 
-test.appendleft('e')
+test.appendleft("e")
 print(f"{test}")
 
 test.pop()
@@ -30,15 +30,16 @@ print(f"{test}")
 
 queue = deque()
 
-queue.append('a')
-queue.append('b')
-queue.append('c')
+queue.append("a")
+queue.append("b")
+queue.append("c")
 print(queue)
 
 
 class Linked_list:
     def __init__(self):
         self.head = None
+
     def __repr__(self):
         node = self.head
         nodes = []
@@ -47,6 +48,7 @@ class Linked_list:
             node = node.next
         nodes.append("None")
         return " -> ".join(nodes)
+
     def __iter__(self):
         node = self.head
         while node is not None:
@@ -55,11 +57,13 @@ class Linked_list:
 
 
 class Node:
-    def __init__(self,data):
+    def __init__(self, data):
         self.data = data
         self.next = None
+
     def __repr__(self):
         return self.data
+
 
 ll = Linked_list()
 ll.head = Node("a")

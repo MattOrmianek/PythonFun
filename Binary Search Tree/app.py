@@ -1,13 +1,14 @@
 # Binary search tree
 # search complexity O(log n)
 
+
 class BinarySearchTreeNode:
     def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
-    def add_child(self,data):
+    def add_child(self, data):
         if data == self.data:
             return None
 
@@ -51,14 +52,16 @@ class BinarySearchTreeNode:
             else:
                 return False
 
+
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
-    for i in range(1,len(elements)):
+    for i in range(1, len(elements)):
         root.add_child(elements[i])
     return root
 
-if __name__ == '__main__':
-    numbers = [5,9,19,2,3,7,21,12]
+
+if __name__ == "__main__":
+    numbers = [5, 9, 19, 2, 3, 7, 21, 12]
     numbers_tree = build_tree(numbers)
-    #print(numbers_tree.in_order_traversal())
+    # print(numbers_tree.in_order_traversal())
     print(numbers_tree.search(5))

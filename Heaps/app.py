@@ -1,4 +1,4 @@
-#heap queue algorithm
+# heap queue algorithm
 
 
 # heapify - converts a regular list to a heap
@@ -8,8 +8,8 @@
 
 import heapq
 
-A = [21,1,45,78,3,5]
-B = [17,17,2,3,4]
+A = [21, 1, 45, 78, 3, 5]
+B = [17, 17, 2, 3, 4]
 heapq.heapify(A)
 heapq.heapify(B)
 
@@ -19,6 +19,5 @@ print(f"B: {B}")
 heapq.heappop(A)
 
 print(f"A: {A}")
-heapq.heappush(A,2)
+heapq.heappush(A, 2)
 print(f"A: {A}")
-

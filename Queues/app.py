@@ -6,9 +6,9 @@ from collections import deque
 q = deque()
 
 # Adding elements to a queue
-q.append('a')
-q.append('b')
-q.append('c')
+q.append("a")
+q.append("b")
+q.append("c")
 
 print("Initial queue")
 print(q)

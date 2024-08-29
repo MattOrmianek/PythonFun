@@ -8,7 +8,7 @@ extensions = [
 ]
 
 setup(
-    name='MyCythonApp',
+    name="MyCythonApp",
     ext_modules=cythonize(extensions),
 )
 
