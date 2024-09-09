@@ -1,0 +1,11 @@
+2024-09-09 15:05:28 - new_way.py:33 - main - DEBUG - debug message
+2024-09-09 15:05:28 - new_way.py:34 - main - INFO - info message
+2024-09-09 15:05:28 - new_way.py:35 - main - WARNING - warning message
+2024-09-09 15:05:28 - new_way.py:36 - main - ERROR - error message
+2024-09-09 15:05:28 - new_way.py:37 - main - CRITICAL - critical message
+2024-09-09 15:05:28 - new_way.py:41 - main - ERROR - exception message
+Traceback (most recent call last):
+  File "/Users/mateuszormianek/Desktop/Programming/Python/PythonFun/logging/new_way.py", line 39, in main
+    1 / 0
+    ~~^~~
+ZeroDivisionError: division by zero
