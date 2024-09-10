@@ -4,8 +4,11 @@ import atexit
 import json
 import logging.config
 import logging.handlers
+from logging.handlers import QueueHandler, QueueListener
+from queue import Queue
 import pathlib
 
+# Global logger instance
 logger = logging.getLogger("my_app")
 
 
@@ -19,18 +22,29 @@ def setup_logging() -> None:
     - queued-stderr-json-file.json
     - stderr-json-file.json
     - my_config.json
-
     """
 
+    # Load the logging configuration from JSON file
     config_file = pathlib.Path("logging_configs/my_config.json")
     with open(config_file, encoding="utf-8") as f_in:
         config = json.load(f_in)
 
     logging.config.dictConfig(config)
-    queue_handler = logging.getHandlerByName("queue_handler")  # pylint: disable=no-member
+
+    # Retrieve the 'queue_handler' from the configured root logger
+    root_logger = logging.getLogger()  # Use root logger to check for handlers
+    queue_handler = None
+    for handler in root_logger.handlers:
+        if isinstance(handler, QueueHandler):
+            queue_handler = handler
+            break
+
+    # If a QueueHandler is found, set up a listener and start it
     if queue_handler is not None:
-        queue_handler.listener.start()
-        atexit.register(queue_handler.listener.stop)
+        log_queue: Queue = Queue()
+        listener = QueueListener(log_queue, *root_logger.handlers)
+        listener.start()
+        atexit.register(listener.stop)
 
 
 def main() -> None:
