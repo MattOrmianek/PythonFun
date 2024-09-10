@@ -45,7 +45,7 @@ def main() -> None:
     try:
         1 / 0
     except ZeroDivisionError:
-        logger.exception("exception message")
+        logger.error("ZeroDivisionError: You cannot divide by zero.")
 
 
 if __name__ == "__main__":

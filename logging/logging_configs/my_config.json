@@ -2,6 +2,18 @@
     "version": 1,
     "disable_existing_loggers": false,
     "formatters": {
+        "colored": {
+            "()": "colorlog.ColoredFormatter",
+            "format": "%(log_color)s%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(levelname)s - %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S",
+            "log_colors": {
+                "DEBUG": "cyan",
+                "INFO": "green",
+                "WARNING": "yellow",
+                "ERROR": "red",
+                "CRITICAL": "bold_red"
+            }
+        },
         "simple": {
             "format": "%(asctime)s - %(filename)s:%(lineno)d - %(funcName)s - %(levelname)s - %(message)s",
             "datefmt": "%Y-%m-%d %H:%M:%S"
@@ -11,7 +23,7 @@
         "stderr": {
             "class": "logging.StreamHandler",
             "level": "DEBUG",
-            "formatter": "simple",
+            "formatter": "colored",
             "stream": "ext://sys.stderr"
         },
         "file": {
