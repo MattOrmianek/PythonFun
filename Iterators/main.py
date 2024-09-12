@@ -90,6 +90,13 @@ def example_islice() -> None:
     assert result == [2, 4, 6]
 
 
+def example_pairwise():
+    """This is example of pairwise"""
+    data = [1, 2, 3, 4, 5]
+    pairs = list(itertools.pairwise(data))
+    assert pairs == [(1, 2), (2, 3), (3, 4), (4, 5)]
+
+
 if __name__ == "__main__":
     buildins()
     example_counter()
@@ -101,3 +108,4 @@ if __name__ == "__main__":
     example_filterfalse()
     example_groupby()
     example_islice()
+    example_pairwise()
