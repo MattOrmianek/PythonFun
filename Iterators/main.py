@@ -81,6 +81,15 @@ def example_groupby() -> None:
     ]
 
 
+def example_islice() -> None:
+    """This is example of islice"""
+    data = list(range(10))
+    result = list(itertools.islice(data, 3, 7))
+    assert result == [3, 4, 5, 6]
+    result = list(itertools.islice(data, 2, 8, 2))
+    assert result == [2, 4, 6]
+
+
 if __name__ == "__main__":
     buildins()
     example_counter()
@@ -91,3 +100,4 @@ if __name__ == "__main__":
     example_dropwhile()
     example_filterfalse()
     example_groupby()
+    example_islice()
