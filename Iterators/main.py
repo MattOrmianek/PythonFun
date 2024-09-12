@@ -106,6 +106,13 @@ def example_tee() -> None:
     assert values1 == values2 == [1, 2, 3, 4, 5]
 
 
+def example_combinations() -> None:
+    """This is example of combinations"""
+    data = ["a", "b", "c", "d"]
+    result = list(itertools.combinations(data, 2))
+    assert result == [("a", "b"), ("a", "c"), ("a", "d"), ("b", "c"), ("b", "d"), ("c", "d")]
+
+
 if __name__ == "__main__":
     buildins()
     example_counter()
@@ -119,3 +126,4 @@ if __name__ == "__main__":
     example_islice()
     example_pairwise()
     example_tee()
+    example_combinations()
