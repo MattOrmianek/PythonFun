@@ -6,7 +6,7 @@ import itertools
 def buildins() -> None:
     """This is testing filter function"""
     example_list = [1, 2, None, 3]
-    filtered_list = [x for x in filter(None, example_list)]
+    filtered_list = list(filter(None, example_list))
     assert filtered_list == [1, 2, 3]
 
 
@@ -27,8 +27,8 @@ def example_accumulate() -> None:
 
 def example_batched() -> None:
     """This is example of batched"""
-    values = list(itertools.batched([1, 2, 3, 4, 5], 3))
-    values_even = list(itertools.batched([1, 2, 3, 4, 5, 6], 2))
+    values = list(itertools.batched([1, 2, 3, 4, 5], 3))  # pylint: disable=no-member
+    values_even = list(itertools.batched([1, 2, 3, 4, 5, 6], 2))  # pylint: disable=no-member
     assert values == [(1, 2, 3), (4, 5)]
     assert values_even == [(1, 2), (3, 4), (5, 6)]
 
