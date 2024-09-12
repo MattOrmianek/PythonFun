@@ -47,11 +47,20 @@ def example_compress() -> None:
     values = list(itertools.compress(data, selectros))
     assert values == [1, 3]
 
+
 def example_dropwhile() -> None:
     """This is example of dropwhile"""
     data = [1, 2, 3, 4, 5]
     values = list(itertools.dropwhile(lambda x: x < 3, data))
     assert values == [3, 4, 5]
+
+
+def example_filterfalse() -> None:
+    """This is example of filterfalse"""
+    data = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    result = list(itertools.filterfalse(lambda x: x % 2 == 0, data))
+    assert result == [1, 3, 5, 7, 9]
+
 
 if __name__ == "__main__":
     buildins()
@@ -61,3 +70,4 @@ if __name__ == "__main__":
     example_chain_from_iterable()
     example_compress()
     example_dropwhile()
+    example_filterfalse()
