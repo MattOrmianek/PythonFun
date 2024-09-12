@@ -62,6 +62,25 @@ def example_filterfalse() -> None:
     assert result == [1, 3, 5, 7, 9]
 
 
+def example_groupby() -> None:
+    """This is example of groupby"""
+    data = [
+        ("a", 1),
+        ("a", 2),
+        ("b", 3),
+        ("b", 4),
+        ("c", 5),
+        ("c", 6),
+    ]
+    grouped = itertools.groupby(data, key=lambda x: x[0])
+    result = [(key, list(group)) for key, group in grouped]
+    assert result == [
+        ("a", [("a", 1), ("a", 2)]),
+        ("b", [("b", 3), ("b", 4)]),
+        ("c", [("c", 5), ("c", 6)]),
+    ]
+
+
 if __name__ == "__main__":
     buildins()
     example_counter()
@@ -71,3 +90,4 @@ if __name__ == "__main__":
     example_compress()
     example_dropwhile()
     example_filterfalse()
+    example_groupby()
