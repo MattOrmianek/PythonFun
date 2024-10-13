@@ -2,11 +2,17 @@ from flask import Flask, request, render_template, redirect, url_for
 
 app = Flask(__name__, template_folder="templates")
 
-@app.route("/")
-def hello_world():
-    myvalue = "Hello, World!"
-    mylist = [1, 2, 3, 4, 5]
-    return render_template("index.html", myvalue=myvalue, mylist=mylist)
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "GET":
+        return render_template("index.html")
+    elif request.method == "POST":
+        username = request.form["username"]
+        password = request.form["password"]
+        if username == "admin" and password == "password":
+            return redirect(url_for("other"))
+        else:
+            return "Invalid credentials"
 
 @app.route("/other")
 def other():
@@ -28,6 +34,8 @@ def alternate_case_filter(s):
 @app.route('/redirect')
 def redirect_to_other():
     return redirect(url_for('other'))
+
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5555, debug=True)
