@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Index Page{% endblock %}
+
+{% block content %}
+    <h1>{{ myvalue }}</h1>
+
+    {% for item in mylist %}
+        {% if item % 2 == 0 %}
+            <li>{{ item }}</li>
+        {% else %}
+            <li style="color: red;">{{ item }}</li>
+        {% endif %}
+
+    {% endfor %}
+
+    {% for item in mylist %}
+        <li{% if item % 2 == 0 %} style="color: red;"{% endif %}>{{ item }}</li>
+    {% endfor %}
+
+
+{% endblock %}
