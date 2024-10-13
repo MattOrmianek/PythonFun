@@ -8,4 +8,9 @@
     <input type="password" name="password" placeholder="Password"> </br>
     <button type="submit" value="Login">Login</button>
 </form>
+</br>
+<form method="POST" action="{{ url_for('file_upload') }}" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xls,.xlsx"> </br>
+    <button type="submit" value="Upload file">Upload</button>
+</form>
 {% endblock %}
