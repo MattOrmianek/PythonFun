@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Other Page{% endblock %}
+
+{% block content %}
+    <h1>Filters</h1>
+    <p>{{ myvalue }} -> {{ myvalue | upper }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | reverse }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | capitalize }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | title }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | replace("Hello", "Hi") }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | reverse }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | repeat(3) }}</p>
+    <p>{{ myvalue }} -> {{ myvalue | alternate_case }}</p>
+{% endblock %}
