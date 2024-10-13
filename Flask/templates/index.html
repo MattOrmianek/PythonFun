@@ -13,4 +13,10 @@
     <input type="file" name="file" accept=".xls,.xlsx"> </br>
     <button type="submit" value="Upload file">Upload</button>
 </form>
+
+<form method="POST" action="{{ url_for('convert_to_csv') }}" enctype="multipart/form-data">
+    <input type="file" name="file" accept=".xls,.xlsx"> </br>
+    <button type="submit" value="Convert to CSV">Convert</button>
+</form>
+
 {% endblock %}

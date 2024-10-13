@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect, url_for, Response
 import pandas as pd
 from lib.parser import read_excel
 app = Flask(__name__, template_folder="templates")
@@ -32,6 +32,16 @@ def file_upload():
         else:
             return "No file uploaded"
 
+@app.route("/convert_to_csv", methods=["POST"])
+def convert_to_csv():
+    file = request.files["file"]
+    if file and file.filename:
+        df = pd.read_excel(file)
+        response = Response(df.to_csv(index=False), content_type="text/csv")
+        response.headers["Content-Disposition"] = f"attachment; filename={file.filename.split('.')[0]}.csv"
+        return response
+    else:
+        return "No file uploaded"
 
 @app.route("/other")
 def other():
