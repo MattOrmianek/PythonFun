@@ -41,12 +41,7 @@ Write a function to check if two strings are anagrams of each other.
 """
 
 def anagram_check(s1: str, s2: str) -> bool:
-    for char in s1:
-        if char in s2:
-            continue
-        else:
-            return False
-    return True
+    return sorted(s1) == sorted(s2)  # Compare sorted versions of both strings
 
 assert anagram_check("listen", "silent") == True
 assert anagram_check("hello", "world") == False
