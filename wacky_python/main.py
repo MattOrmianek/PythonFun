@@ -15,3 +15,11 @@ if user is not None:
     print(user)
 else:
     print('User not found')
+
+# Another example of using walrus operator
+def analyse_text(text: str) -> dict[str,str|float|list[str]]:
+    return {'words' : (words := text.split()),
+            'word_count' : (word_count := len(words)),
+            'average_word_length' : (sum(len(word) for word in words) / word_count)}
+
+print(analyse_text('Hello world'))
